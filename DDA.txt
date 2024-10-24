@@ -1,0 +1,437 @@
+1.String Pattern matching by using Brute Force Algorithm.
+
+def brute_force(text,pattern):
+    n= len(text)
+    m= len(pattern)
+    for i in range(n-m+1):
+        if text[i:i + m] == pattern:
+            return i
+    return -1
+text = "Aditya Ramesh Maurya"
+pattern = "Adi"
+index = brute_force(text,pattern)
+if index != -1:
+    print(f"Pattern '{pattern}' found at index {index}")
+else:
+    print(f"Pattern '{pattern}' not found in the text")
+
+Description:The brute force algorithm compares the pattern to the text , one character at  time , until unmatching character are found. compared characters are initialize ad correct matches are in boldface type. The algrotihm can be designed to stop on either the first occurance of the pattern, or upon searching the end of the text.
+
+2. Factorial by using Recursive Function.
+
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return(n*factorial(n-1));
+n=int(input("Enter a number:"))
+factorial = factorial(n)
+print("Factorial of",n,"is",factorial)
+ 	
+Description: A recursive function in database and algorithm is a function that call itself in order to solve smaller instance of the same problem it's typically includes a base , case to terminate the recursion and a recursive step that breaks down the problem into simpler subproblems. Recursion is commonly used in tree traversal, sorting and managing data.
+
+3. ARRAYS
+
+def reverse_order(arr):
+    print("Array elements in reverse order:")
+    for i in range(len(arr)-1, -1, -1):
+        print(arr[i], end=" ")
+
+n = int(input("Enter size of an array: "))
+arr = []
+print("Enter elements in the array:")
+for i in range(n):
+    element = int(input())
+    arr.append(element)
+
+reverse_order(arr)
+
+Description: Rivers order of an array 
+Reversing and array means arranging it elements in the opposite order the last element becomes the first and the first element becomes the last this is done by swapping the elements from the start. And end of the array moving towards the centre the resulting array has the same element but in rivers order
+
+3B. sum of all elements in array
+
+def find_sum(arr):
+    total = sum(arr)
+    return total
+arr = [12,20,9,5]
+result = find_sum(arr)
+print("The sum of all element of an array is:",result)
+
+Description: Sum all elements in an array
+Finding the sum of all elements  in an array involves adding up each individual elements value. This is done by iterating through the array, starting from the first element, and adding each element valued to the running total. The process continue until all elements have been added. Resulting in the total sum of the array 
+
+
+
+3C. Decending order of sorted array and merge array
+
+def merge_sort(arr1,arr2):
+    merge = arr1 + arr2
+    merge.sort(reverse=True)
+    return merge
+arr1 = [1,2,3]
+arr2 = [4,5,6]
+result = merge_sort(arr1,arr2)
+print("Descending order of sorted array and merge array is:",result)
+
+Description:March to array and then arrange in descending order 
+Merging to arrays combines their elements into a single array, containing all elements from the both original Harris the must array is then stored in descending order, arranging the elements from largest to smallest. The resulting array contains all elements from both original arrays in a single sorted list in descending order
+
+
+
+4. singly linked list
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def insert(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def delete(self, data):
+        if not self.head:
+            return
+        if self.head.data == data:
+            self.head = self.head.next
+            return
+        current = self.head
+        while current.next:
+            if current.next.data == data:
+                current.next = current.next.next
+                return
+            current = current.next
+
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+    def traverse(self):
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+# Create a linked list and perform operations
+ll = LinkedList()
+ll.insert(10)
+ll.insert(20)
+ll.insert(30)
+ll.insert(40)
+
+print("Linked List:")
+ll.display()
+
+print("Traversing the Linked List:")
+ll.traverse()
+
+ll.delete(20)
+print("Linked List after deletion:")
+ll.display()
+
+Description: Singly linked list is a fundamental data structure in computer science and programming it is collection of notes where each node contain a data field and reference link to the next node in the sequence. The last node in the list points to null. Indicating the end of the list
+
+
+
+5.Doubly linked list
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+    def insert(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+            new_node.prev = current
+    def delete(self, data):
+        current = self.head
+        while current:
+            if current.data == data:
+                if current.prev:
+                    current.prev.next = current.next
+                else:
+                    self.head = current.next
+                if current.next:
+                    current.next.prev = current.prev
+                return
+            current = current.next
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data, end=" <-> ")
+            current = current.next
+        print("None")
+    def traverse(self, forward=True):
+        current = self.head if forward else None
+        while current:
+            print(current.data, end=" <-> ")
+            current = current.next if forward else current.prev
+        print("None")
+doubly_linked_list = DoublyLinkedList()
+doubly_linked_list.insert(10)
+doubly_linked_list.insert(20)
+doubly_linked_list.insert(30)
+doubly_linked_list.insert(40)
+print("Doubly Linked List:")
+doubly_linked_list.display()
+print("Traversing the Doubly Linked List forward:")
+doubly_linked_list.traverse()
+print("Traversing the Doubly Linked List backward:")
+doubly_linked_list.traverse(forward=False)
+doubly_linked_list.delete(20)
+print("Doubly Linked List after deletion:")
+doubly_linked_list.display()
+
+Description: A doubly linked list is a data structure that consists of a set of nodes, each of which contains a value and two pointers, 1 pointing to the previous node in the list and one pointing to the next node in the list. This allows for efficient traversal of the list in both directions, making it suitable for application, where frequent insertion and deletion are required.
+
+
+6.BUBBLE SORT.
+
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(n - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+numbers = [12,20,5,11,23,2]
+print("Original list:", numbers)
+
+bubble_sort(numbers)
+print("Sorted list:", numbers)
+
+Description: Bubble sort is a simple sorting algorithm used in both database and algorithm it work  repeatedly stepping through a list of elements comparing each pair of adjacent element and swapping them if they are in the wrong order this process is repeated until the list is shorted
+
+
+
+7. Stacks
+
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            return "Stack is empty"
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]
+        else:
+            return "Stack is empty"
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def size(self):
+        return len(self.items)
+
+    def display(self):
+        print("Stack:", self.items)
+
+    def traverse(self):
+        print("Stack traversal:")
+        for item in reversed(self.items):
+            print(item)
+
+    def delete(self):
+        if not self.is_empty():
+            self.pop()  # Using pop() to remove the top element
+            print("Top element deleted.")
+        else:
+            print("Stack is empty. Nothing to delete.")
+
+# Creating a stack 
+stack = Stack()
+
+# Inserting elements 
+stack.push(10)
+stack.push(20)
+stack.push(30)
+
+# Displaying the stack
+stack.display()
+
+# Traversing the stack 
+stack.traverse()
+
+# Deleting the top element
+stack.delete()
+
+# Displaying the final stack
+stack.display()
+
+Description: Stack is the data structure used in database that follows the last in first out principle. This mean that the last element added to the stack if the first one to be removed. Common operations includes push(add),pop(remove),and peak(view top element). Stacker used in tasks like expression evaluation, backtracking and function call management.
+
+
+
+8. Queue
+
+class Queue:
+    def __init__(self):
+        self.items = [] 
+    def enqueue(self, item):
+        self.items.append(item)        
+    def dequeue(self):
+        if not self.is_empty():
+            return self.items.pop(0)
+        else:
+            return "Queue is empty" 
+    def is_empty(self): 
+            return len(self.items) == 0 
+    def display(self): 
+        print("Queue:", self.items) 
+    def traverse(self): 
+        print("Queue traversal:")
+        for item in self.items: 
+            print(item)
+# Creating a queue
+queue = Queue() 
+# Inserting elements
+queue.enqueue(10)
+queue.enqueue(20)
+queue.enqueue(30) 
+# Displaying the queue
+queue.display() 
+# Traversing the queue
+queue.traverse() 
+# Deleting an element
+print("Dequeued:", queue.dequeue()) 
+# Displaying the final queue
+queue.display()  
+
+Description: Queue is a data structure in which addition of element is allowed at one and (called as rear end). queue is also known as FIFO. It indicates that the first inserted element to be removed first and last inserted element to be removed last.
+
+
+
+9. Binary tree
+
+    def insert(self, value):
+        if value < self.value:
+            if self.left is None:
+                self.left = Tree(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = Tree(value)
+            else:
+                self.right.insert(value)
+# Creating the root of the tree
+root = Tree(6)
+# Inserting elements into the tree
+root.insert(4)
+root.insert(2)
+root.insert(5)
+root.insert(9)
+root.insert(8)
+root.insert(10)
+# Displaying in-order traversal
+print("Inorder traversal after insertion: ", end='')
+root.inorder(root)
+
+Description: Binary tree traversal is the process of visiting each node in a binary tree in a specific order: Inorder, pre-order or postorder 
+1. Inorder: Traverse left subtree, visit root, traverse right subtree 
+2. Preorder: Visit root, traverse left subtree, traverse right subtree 
+3. Postorder: traverse left subtree. Traverse right subtree, visit root
+
+
+
+
+10. Binary tree
+
+class Tree:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+    def inorder(self, root):
+        if root is None:
+            return
+        self.inorder(root.left)
+        print(root.value, end=' ')
+        self.inorder(root.right)
+    def insert(self, value):
+        if value < self.value:
+            if self.left is None:
+                self.left = Tree(value)
+            else:
+                self.left.insert(value)
+        else:
+            if self.right is None:
+                self.right = Tree(value)
+            else:
+                self.right.insert(value)
+    def delete(self, value):
+        if value < self.value:
+            if self.left:
+                self.left = self.left.delete(value)
+        elif value > self.value:
+            if self.right:
+                self.right = self.right.delete(value)
+        else:
+            if self.left is None:
+                return self.right
+            elif self.right is None:
+                return self.left
+            min_larger_node = self.right
+            while min_larger_node.left is not None:
+                min_larger_node = min_larger_node.left
+            self.value = min_larger_node.value
+            self.right = self.right.delete(min_larger_node.value)
+        return self
+
+# Example usage
+root = Tree(4)
+root.insert(12)
+root.insert(20)
+root.insert(5)
+root.insert(9)
+
+print("Inorder traversal after insertion: ", end='')
+root.inorder(root)
+
+root = root.delete(2)
+print('\n2 is deleted: ', end='')
+root.inorder(root)
+
+root = root.delete(0)
+print('\n4 is deleted: ', end='')
+root.inorder(root)
+root = root.delete(3)
+print('\n6 is deleted: ', end='')
+root.inorder(root)
+
+Description: A binary search tree(BST) is a binary tree where each node has a value greater than all node in its left subtree and less than those in its right Subtree. 
+1. Insertion: Because the new value in correct option based on comparison with correct node. 
+2. Deletion: Removed the node and adjust tree depending on weather the node has no children, one child or two child
+
